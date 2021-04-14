@@ -1,0 +1,74 @@
+@bg-color: #b7d4a8;
+
+* {
+    padding: 0;
+    margin: 0;
+    // 改变盒子模型的计算方式（包含边框、内边距）
+    box-sizing: border-box;
+}
+
+body {
+    font: bold 20px "Courier";
+}
+
+#main {
+    width: 360px;
+    height: 420px;
+    background: @bg-color;
+    margin: 100px auto;
+    border: 10px solid black;
+    border-radius: 30px;
+
+    // 开启弹性盒模型
+    display: flex;
+    // 设置主轴方向(纵向排列)
+    flex-flow: column;
+    // 设置侧轴方向(居中)
+    align-items: center;
+    // 设置主轴对齐方式（空白分配到元素四周）
+    justify-content: space-around;
+
+    #stage {
+        width: 304px;
+        height: 304px;
+        border: 2px solid black;
+        position: relative;
+
+        #snake {
+            & > div {
+                width: 10px;
+                height: 10px;
+            position: absolute;
+                background-color: black;
+                border: 1px solid @bg-color;
+            }
+        }
+
+        #food {
+            width: 10px;
+            height: 10px;
+            top: 40px;
+            position: absolute;
+            display: flex;
+            // 设置横向为主轴 warp表示会换行
+            flex-flow: row wrap;
+            // 设置主轴和侧轴的空白分配到元素中间
+            justify-content: space-between;
+            align-content: space-between;
+
+            & > div {
+                width: 4px;
+                height: 4px;
+                background-color: black;
+                transform: rotate(45deg);
+            }
+        }
+    }
+
+
+    #score-panel {
+        width: 300px;
+        display: flex;
+        justify-content: space-between;
+    }
+}
